@@ -1,4 +1,4 @@
-package de.fruitfly.ovr;
+package jrift;
 
 import java.util.Arrays;
 

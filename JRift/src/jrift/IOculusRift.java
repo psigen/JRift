@@ -1,4 +1,4 @@
-package de.fruitfly.ovr;
+package jrift;
 
 public interface IOculusRift {
 	public boolean init();
