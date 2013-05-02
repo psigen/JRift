@@ -162,7 +162,7 @@
     <ClCompile Include="JRiftLibrary.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="de_fruitfly_ovr_OculusRift.h" />
+    <ClInclude Include="jrift_OculusRift.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

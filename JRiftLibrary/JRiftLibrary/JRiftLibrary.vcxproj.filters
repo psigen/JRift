@@ -20,7 +20,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="de_fruitfly_ovr_OculusRift.h">
+    <ClInclude Include="jrift_OculusRift.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

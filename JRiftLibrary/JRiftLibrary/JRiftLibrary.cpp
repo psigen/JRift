@@ -1,4 +1,4 @@
-#include "de_fruitfly_ovr_OculusRift.h"
+#include "jrift_OculusRift.h"
 #include "OVR.h"	
 
 #include <cstring>
@@ -18,14 +18,14 @@ Quatf quaternion;
 float yaw, pitch, roll;
 
 /*
-JNIEXPORT void JNICALL Java_de_fruitfly_ovr_OculusRift_callnative(JNIEnv *env, jobject jobject) {
+JNIEXPORT void JNICALL Java_jrift_OculusRift_callnative(JNIEnv *env, jobject jobject) {
 	jclass jclazz = env->GetObjectClass(jobject);
 	jmethodID mid = env->GetMethodID(jclazz, "myJavaMethod", "()V");
 	env->CallVoidMethod(jobject, mid);
 	printf("HELLO WORLD");
 }*/
 
-JNIEXPORT jboolean JNICALL Java_de_fruitfly_ovr_OculusRift_initSubsystem(JNIEnv *env, jobject jobj) {
+JNIEXPORT jboolean JNICALL Java_jrift_OculusRift_initSubsystem(JNIEnv *env, jobject jobj) {
 	System::Init();
 
 	pManager = *DeviceManager::Create();
@@ -64,7 +64,7 @@ JNIEXPORT jboolean JNICALL Java_de_fruitfly_ovr_OculusRift_initSubsystem(JNIEnv 
 	return Initialized;
 }
 
-JNIEXPORT void JNICALL Java_de_fruitfly_ovr_OculusRift_destroySubsystem(JNIEnv *env, jobject jobj) {
+JNIEXPORT void JNICALL Java_jrift_OculusRift_destroySubsystem(JNIEnv *env, jobject jobj) {
 	printf("Destroying Oculus Rift device interface.\n");
 	pSensor.Clear();
 	pManager.Clear();
@@ -72,7 +72,7 @@ JNIEXPORT void JNICALL Java_de_fruitfly_ovr_OculusRift_destroySubsystem(JNIEnv *
 	System::Destroy();
 }
 
-JNIEXPORT void JNICALL Java_de_fruitfly_ovr_OculusRift_pollSubsystem(JNIEnv *, jobject) {
+JNIEXPORT void JNICALL Java_jrift_OculusRift_pollSubsystem(JNIEnv *, jobject) {
 	if (!Initialized) return;
 	if (!pSensor) return;
 
@@ -80,77 +80,77 @@ JNIEXPORT void JNICALL Java_de_fruitfly_ovr_OculusRift_pollSubsystem(JNIEnv *, j
 	quaternion.GetEulerAngles<Axis_Y, Axis_X, Axis_Z>(&yaw, &pitch, &roll);
 }
 
-JNIEXPORT jint JNICALL Java_de_fruitfly_ovr_OculusRift__1getHResolution(JNIEnv *, jobject) {
+JNIEXPORT jint JNICALL Java_jrift_OculusRift__1getHResolution(JNIEnv *, jobject) {
 	if (!Initialized) return 0;
 	return Info.HResolution;
 }
 
-JNIEXPORT jint JNICALL Java_de_fruitfly_ovr_OculusRift__1getVResolution(JNIEnv *, jobject){
+JNIEXPORT jint JNICALL Java_jrift_OculusRift__1getVResolution(JNIEnv *, jobject){
 	if (!Initialized) return 0;
 	return Info.VResolution;
 }
 
-JNIEXPORT jfloat JNICALL Java_de_fruitfly_ovr_OculusRift__1getHScreenSize(JNIEnv *, jobject){
+JNIEXPORT jfloat JNICALL Java_jrift_OculusRift__1getHScreenSize(JNIEnv *, jobject){
 	if (!Initialized) return 0.0f;
 	return Info.HScreenSize;
 }
 
-JNIEXPORT jfloat JNICALL Java_de_fruitfly_ovr_OculusRift__1getVScreenSize(JNIEnv *, jobject){
+JNIEXPORT jfloat JNICALL Java_jrift_OculusRift__1getVScreenSize(JNIEnv *, jobject){
 	if (!Initialized) return 0.0f;
 	return Info.VScreenSize;
 }
 
-JNIEXPORT jfloat JNICALL Java_de_fruitfly_ovr_OculusRift__1getVScreenCenter(JNIEnv *, jobject){
+JNIEXPORT jfloat JNICALL Java_jrift_OculusRift__1getVScreenCenter(JNIEnv *, jobject){
 	if (!Initialized) return 0.0f;
 	return Info.VScreenCenter;
 }
 
-JNIEXPORT jfloat JNICALL Java_de_fruitfly_ovr_OculusRift__1getEyeToScreenDistance(JNIEnv *, jobject){
+JNIEXPORT jfloat JNICALL Java_jrift_OculusRift__1getEyeToScreenDistance(JNIEnv *, jobject){
 	if (!Initialized) return 0.0f;
 	return Info.EyeToScreenDistance;
 }
 
-JNIEXPORT jfloat JNICALL Java_de_fruitfly_ovr_OculusRift__1getLensSeparationDistance(JNIEnv *, jobject){
+JNIEXPORT jfloat JNICALL Java_jrift_OculusRift__1getLensSeparationDistance(JNIEnv *, jobject){
 	if (!Initialized) return 0.0f;
 	return Info.LensSeparationDistance;
 }
 
-JNIEXPORT jfloat JNICALL Java_de_fruitfly_ovr_OculusRift__1getInterpupillaryDistance(JNIEnv *, jobject){
+JNIEXPORT jfloat JNICALL Java_jrift_OculusRift__1getInterpupillaryDistance(JNIEnv *, jobject){
 	if (!Initialized) return 0.0f;
 	return Info.InterpupillaryDistance;
 }
 
-JNIEXPORT jfloat JNICALL Java_de_fruitfly_ovr_OculusRift__1getDistortionK0(JNIEnv *, jobject){
+JNIEXPORT jfloat JNICALL Java_jrift_OculusRift__1getDistortionK0(JNIEnv *, jobject){
 	if (!Initialized) return 0.0f;
 	return Info.DistortionK[0];
 }
 
-JNIEXPORT jfloat JNICALL Java_de_fruitfly_ovr_OculusRift__1getDistortionK1(JNIEnv *, jobject){
+JNIEXPORT jfloat JNICALL Java_jrift_OculusRift__1getDistortionK1(JNIEnv *, jobject){
 	if (!Initialized) return 0.0f;
 	return Info.DistortionK[1];
 }
 
-JNIEXPORT jfloat JNICALL Java_de_fruitfly_ovr_OculusRift__1getDistortionK2(JNIEnv *, jobject){
+JNIEXPORT jfloat JNICALL Java_jrift_OculusRift__1getDistortionK2(JNIEnv *, jobject){
 	if (!Initialized) return 0.0f;
 	return Info.DistortionK[2];
 }
 
-JNIEXPORT jfloat JNICALL Java_de_fruitfly_ovr_OculusRift__1getDistortionK3(JNIEnv *, jobject){
+JNIEXPORT jfloat JNICALL Java_jrift_OculusRift__1getDistortionK3(JNIEnv *, jobject){
 	if (!Initialized) return 0.0f;
 	return Info.DistortionK[3];
 }
 
-JNIEXPORT jfloat JNICALL Java_de_fruitfly_ovr_OculusRift__1getYaw(JNIEnv *, jobject){
+JNIEXPORT jfloat JNICALL Java_jrift_OculusRift__1getYaw(JNIEnv *, jobject){
 	if (!Initialized) return 0.0f;
 	return yaw;
 }
 
-JNIEXPORT jfloat JNICALL Java_de_fruitfly_ovr_OculusRift__1getPitch(JNIEnv *, jobject){
+JNIEXPORT jfloat JNICALL Java_jrift_OculusRift__1getPitch(JNIEnv *, jobject){
 	if (!Initialized) return 0.0f;
 	return pitch;
 }
 
-JNIEXPORT jfloat JNICALL Java_de_fruitfly_ovr_OculusRift__1getRoll(JNIEnv *, jobject){
+JNIEXPORT jfloat JNICALL Java_jrift_OculusRift__1getRoll(JNIEnv *, jobject){
 	if (!Initialized) return 0.0f;
 	return roll;
 }
